@@ -14,6 +14,7 @@ class StoreCategoryModel {
   DateTime? date;
   bool? deleted;
   List<String>? search;
+  Map? icon;
 
   StoreCategoryModel({
     this.name,
@@ -23,6 +24,7 @@ class StoreCategoryModel {
     this.date,
     this.deleted,
     this.search,
+    this.icon,
   });
 
   StoreCategoryModel copyWith({
@@ -33,6 +35,7 @@ class StoreCategoryModel {
     DateTime? date,
     bool? deleted,
     List<String>? search,
+    Map? icon,
   }) =>
       StoreCategoryModel(
         name: name ?? this.name,
@@ -42,6 +45,7 @@ class StoreCategoryModel {
         date: date ?? this.date,
         deleted: deleted ?? this.deleted,
         search: search ?? this.search,
+        icon: icon ?? this.icon,
       );
 
   factory StoreCategoryModel.fromJson(Map<String, dynamic> json) =>
@@ -55,6 +59,7 @@ class StoreCategoryModel {
         search: json["search"] == null
             ? []
             : List<String>.from(json["search"]!.map((x) => x)),
+        icon: json["icon"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -64,6 +69,7 @@ class StoreCategoryModel {
         "kit": kit,
         "date": date,
         "deleted": deleted,
+        "icon": icon,
         "search":
             search == null ? [] : List<dynamic>.from(search!.map((x) => x)),
       };

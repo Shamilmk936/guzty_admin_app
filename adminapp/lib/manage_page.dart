@@ -1,11 +1,13 @@
 import 'package:adminapp/features/products/screens/products.dart';
-import 'package:adminapp/features/store/screens/add_category.dart';
+import 'package:adminapp/features/store/screens/my_category.dart';
 import 'package:adminapp/splash_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'features/banners/screens/banner_widget.dart';
+import 'features/finance/screens/finance.dart';
+import 'features/variants/screens/add_variants.dart';
 
 String finalEmail = '';
 String finalUserId = '';
@@ -476,13 +478,69 @@ class _ManagePageState extends State<ManagePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const AddCategories(),
+                                builder: (context) => const MyCategory(),
                               ),
                             );
                           },
                         ),
                         const Text(
                           'Store Category',
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          icon: const Icon(
+                            Icons.offline_bolt,
+                            color: Colors.black,
+                            size: 70,
+                          ),
+                          iconSize: 60,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AddVariants(),
+                              ),
+                            );
+                          },
+                        ),
+                        const Text(
+                          'Add variants',
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          icon: const Icon(
+                            Icons.balance,
+                            color: Colors.black,
+                            size: 70,
+                          ),
+                          iconSize: 60,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Finance(),
+                              ),
+                            );
+                          },
+                        ),
+                        const Text(
+                          'Finance',
                           style: TextStyle(
                             fontFamily: 'Poppins',
                           ),

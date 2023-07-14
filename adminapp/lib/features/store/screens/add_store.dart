@@ -174,14 +174,51 @@ class _AddStoreCategoryState extends State<AddStoreCategory> {
             height: h * 0.02,
           ),
           Consumer(builder: (context, ref, child) {
-            var data = ref.watch(getStoreCategoriesProvider(false));
+            var data = ref.watch(getStoreCategoriesProvider);
             return data.when(
               data: (data) {
                 return ListView.builder(
                   shrinkWrap: true,
                   itemCount: data.length,
                   itemBuilder: (context, index) {
-                    return Text(data[index].name!);
+                    return InkWell(
+                      onTap: () {
+                        print(update);
+                        nameController.text = data[index].name!;
+                        update = true;
+                        categoryId = data[index].categoryId!;
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            height: scrHeight * 0.075,
+                            width: scrWidth * 0.85,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: Colors.white,
+                                boxShadow: const [
+                                  BoxShadow(
+                                      color: Colors.black,
+                                      blurRadius: 2,
+                                      offset: Offset(2, 0))
+                                ]),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text(data[index].name!,
+                                    style: GoogleFonts.ubuntu(
+                                        fontWeight: FontWeight.w300,
+                                        fontSize: 15,
+                                        color: Colors.black)),
+                                const Icon(Icons.edit)
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
                   },
                 );
               },
@@ -192,6 +229,7 @@ class _AddStoreCategoryState extends State<AddStoreCategory> {
               loading: () => const CircularProgressIndicator(),
             );
           }),
+
           // StreamBuilder(
           //   stream: FirebaseFirestore.instance
           //       .collection('storeCategory')

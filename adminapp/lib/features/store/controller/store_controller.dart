@@ -7,10 +7,8 @@ final storeControllerProvider = NotifierProvider<StoreController, bool>(() {
 });
 
 final getStoreCategoriesProvider =
-    StreamProvider.family<List<StoreCategoryModel>, bool>((ref, category) {
-  return ref
-      .watch(storeControllerProvider.notifier)
-      .getStoreCategories(category: category);
+    StreamProvider<List<StoreCategoryModel>>((ref) {
+  return ref.watch(storeControllerProvider.notifier).getStoreCategories();
 });
 
 class StoreController extends Notifier<bool> {
@@ -21,9 +19,8 @@ class StoreController extends Notifier<bool> {
     return false;
   }
 
-  Stream<List<StoreCategoryModel>> getStoreCategories(
-      {required bool category}) {
+  Stream<List<StoreCategoryModel>> getStoreCategories() {
     var storeRepository = ref.watch(storeRepositoryProvider);
-    return storeRepository.getStoreCategories(category: category);
+    return storeRepository.getStoreCategories();
   }
 }

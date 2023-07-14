@@ -14,13 +14,11 @@ class StoreRepository {
   StoreRepository({required FirebaseFirestore firestore})
       : _firestore = firestore;
 
-  Stream<List<StoreCategoryModel>> getStoreCategories(
-      {required bool category}) {
-    return _storeCategory.where("kit", isEqualTo: category).snapshots().map(
-        (event) => event.docs
-            .map((e) =>
-                StoreCategoryModel.fromJson(e.data() as Map<String, dynamic>))
-            .toList());
+  Stream<List<StoreCategoryModel>> getStoreCategories() {
+    return _storeCategory.snapshots().map((event) => event.docs
+        .map((e) =>
+            StoreCategoryModel.fromJson(e.data() as Map<String, dynamic>))
+        .toList());
   }
 
   CollectionReference get _storeCategory =>
