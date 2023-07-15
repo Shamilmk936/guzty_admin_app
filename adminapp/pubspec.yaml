@@ -55,6 +55,8 @@ dependencies:
   excel:
   toggle_switch: ^2.1.0
   flutter_riverpod: ^2.3.6
+  flutter_iconpicker:
+  audioplayers: ^0.20.1
 #  multiple_select:
 
 dev_dependencies:
