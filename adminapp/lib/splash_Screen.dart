@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,8 +9,9 @@ import 'features/authentication/login_page.dart';
 
 Color foodZerColor = Colors.cyan;
 var h;
-var scrHeight;
 var w;
+var scrHeight;
+
 var scrWidth;
 var currentUserName;
 var currentUserEmail;
@@ -91,7 +91,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // if (login != true) {
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => LoginPage()),
+          MaterialPageRoute(builder: (context) => const LoginPage()),
           (route) => false);
       // }
       // else {
@@ -104,8 +104,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     w = MediaQuery.of(context).size.width;
-    scrWidth = MediaQuery.of(context).size.width;
     h = MediaQuery.of(context).size.height;
+    scrWidth = MediaQuery.of(context).size.width;
+
     scrHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: primaryColor,
@@ -116,7 +117,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Padding(
               padding: EdgeInsets.only(bottom: h * 0.062),
               child: Column(
-                children: [
+                children: const [
                   CircularProgressIndicator(color: Colors.white),
                 ],
               ),
